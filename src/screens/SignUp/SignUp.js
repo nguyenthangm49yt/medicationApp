@@ -37,7 +37,7 @@ export const SignUp = () => {
                 <View style={styles.btnWrapper}>
                     <View style={styles.btnItemWrapper}>
                         <SecondaryButton
-                        label={'CONTINUE WITH FACEBOOK'}
+                        label={'CONTINUE WITH FACEBOK'}
                         background={colors.facebookBg}
                         fontColor={colors.white}
                         btnType="FACEBOOK"
