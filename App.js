@@ -4,12 +4,13 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SplashScreen } from './src/screens/SplashScreen/SplashScreen';
 import { SignUp } from './src/screens/SignUp/SignUp';
 import { Login } from './src/screens/Login/Login';
-
+import { GettingStarted } from './src/screens/GettingStarted/GettingStarted';
+import { Home } from './src/screens/Home/Home';
 export default function App() {
   return (
     <View style={styles.container}>
-    <SignUp/>
-      
+    
+      <Home/>
     </View>
   );
 }
