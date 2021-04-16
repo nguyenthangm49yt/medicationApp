@@ -137,7 +137,9 @@ export const Home = () => {
                             <Text style={styles.recommentContentTitle}>Focus</Text>
                             <Text style={styles.recommentContentSubTitle}>
                                 MEDITATION - 3-10 MIN
+                                
                             </Text>
+                            
                         </View>
                     </View>
 
