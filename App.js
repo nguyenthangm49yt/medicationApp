@@ -14,7 +14,7 @@ export default function App() {
     </View>
   );
 }
-
+// hsaflsd
 const styles = StyleSheet.create({
   container: {
     flex: 1,
