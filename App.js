@@ -6,11 +6,13 @@ import { SignUp } from './src/screens/SignUp/SignUp';
 import { Login } from './src/screens/Login/Login';
 import { GettingStarted } from './src/screens/GettingStarted/GettingStarted';
 import { Home } from './src/screens/Home/Home';
+import { CourseDetails } from './src/screens/CouserDetails/CousersDetails';
+import { Music } from './src/screens/Music';
 export default function App() {
   return (
     <View style={styles.container}>
     
-      <Home/>
+      <CourseDetails/>
     </View>
   );
 }
