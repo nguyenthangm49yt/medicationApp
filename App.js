@@ -9,11 +9,13 @@ import { Home } from './src/screens/Home/Home';
 import { CourseDetails } from './src/screens/CouserDetails/CousersDetails';
 import { Music } from './src/screens/Music';
 import { Meditate } from './src/screens/Meditate';
+import { ChooseTopic } from './src/screens/ChooseTopic';
+import { Reminder } from './src/screens/Reminder';
 export default function App() {
   return (
     <View style={styles.container}>
     
-      <Meditate/>
+      <Reminder/>
     </View>
   );
 }
@@ -21,7 +23,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: '#fff',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
