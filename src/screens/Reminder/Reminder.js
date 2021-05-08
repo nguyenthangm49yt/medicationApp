@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, Platform, TouchableOpacity} from 'react-native';
 import {colors} from '../../config/colors';
-import DateTimePicker from '@react-native-community/datetimepicker';
+//import DateTimePicker from '@react-native-community/datetimepicker';
 import {PrimaryButton} from '../../components/buttons/PrimaryButton';
 import {styles} from './styles';
 const days = [
@@ -34,14 +34,14 @@ export const Reminder = () => {
         </Text>
       </View>
       <View style={styles.timePickerWrapper}>
-        <DateTimePicker
+         {/* <DateTimePicker
           testID="dateTimePicker"
           value={date}
           mode={mode}
           is24Hour={true}
           display="default"
           onChange={onChange}
-        />
+        /> */}
       </View>
 
       <View style={styles.headingWrapper}>
