@@ -1,8 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity} from 'react-native';
 import {colors} from '../../config/colors';
-import {PrimaryButton} from '../../components/buttons/PrimaryButton';
-export const GettingStarted = () => {
+import {fonts} from '../../config/fonts';
+import {PrimaryButton} from '../../components/buttons/PrimaryButton/PrimaryButton';
+
+export default class GettingStarted extends React.Component {
+  handleBtn = () => {
+    // TODO: ..
+    this.props.navigation.navigate('index')
+  }
+  render() {
     return (
         <View style={styles.container}>
             <View style={styles.logoWrapper}>
@@ -59,16 +66,19 @@ export const GettingStarted = () => {
 
                 <View style={styles.bgBtn}></View>
                 <View style={styles.bgWrapper}>
-                    <PrimaryButton
-                    background={colors.whiteShadeBg}
-                    color={colors.heading}
-                    label={'GET STARTED'}
-                    />
+                    <TouchableOpacity onPress={this.handleBtn}>
+                      <PrimaryButton
+                      background={colors.whiteShadeBg}
+                      color={colors.heading}
+                      label={'GET STARTED'}
+                      />
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
-    )
-}
+    );
+  };
+};
 
 export const styles =  StyleSheet.create({
     container: {
@@ -89,14 +99,14 @@ export const styles =  StyleSheet.create({
         marginTop: 75,
     },
     heading: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontSize: 30,
         color: colors.whiteShade,
         fontWeight: '600',
         textAlign: 'center',
       },
       subHeading: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontSize: 30,
         color: colors.whiteShade,
         marginTop: 10,

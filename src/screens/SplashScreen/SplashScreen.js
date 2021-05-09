@@ -1,8 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {PrimaryButton} from '../../components/buttons/PrimaryButton/PrimaryButton';
 import {styles} from './styles';
-export const SplashScreen = () => {
+
+
+export default class SplashScreen extends React.Component {
+  
+  render() {
   return (
     <View style={styles.container}>
       <Image
@@ -26,16 +30,22 @@ export const SplashScreen = () => {
             Thousand of people are usign silent moon for smalls meditation{' '}
           </Text>
           <View style={styles.btnWrapper}>
-          <PrimaryButton label={'SIGN UP'} />
+               <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
+                   <PrimaryButton label={'SIGN UP'} />
+               </TouchableOpacity>
           </View>
           <Text style={styles.loginLinkWrapper}>
             <Text style={styles.notificationContent}>
               ALREADY HAVE AN ACCOUNT?
             </Text>{' '}
-            <Text style={styles.link}>LOG IN</Text>
+
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+                <Text style={styles.link}>LOG IN</Text>
+            </TouchableOpacity>
           </Text>
         </View>
       </View>
     </View>
   );
+  }
 };

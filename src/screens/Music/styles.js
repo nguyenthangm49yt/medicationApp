@@ -1,5 +1,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {colors} from '../../config/colors';
+import {fonts} from '../../config/fonts';
+
 export const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -24,13 +26,13 @@ export const styles = StyleSheet.create({
     marginTop: '80%',
   },
   title: {
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontWeight: '700',
     fontSize: 34,
     color: colors.heading,
   },
   subTitle: {
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontWeight: '400',
     fontSize: 14,
     color: colors.gray,

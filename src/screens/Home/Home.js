@@ -4,6 +4,7 @@ import {colors} from '../../config/colors';
 import {styles} from './styles';
 
 export const Home = () => {
+    
     return (
         <View style={styles.container}>
             <Image
@@ -147,4 +148,5 @@ export const Home = () => {
             </View>
         </View>
     );
+    
 };

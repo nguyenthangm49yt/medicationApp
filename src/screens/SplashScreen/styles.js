@@ -1,10 +1,14 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../config/colors';
+import {fonts} from '../../config/fonts';
+
 
 export const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        height: '100%',
+        width: '100%',
     },
     bg: {
         padding: 20,
@@ -16,6 +20,7 @@ export const styles = StyleSheet.create({
     },
     welcomeImage: {
         marginTop: 50,
+        
       },
       top: {
         flex: 1,
@@ -25,7 +30,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-end',
       },
       heading: {
-       // fontFamily: 'HelveticaNeue',
+       fontFamily: fonts.font,
         fontSize: 30,
         fontWeight: '700',
         lineHeight: 40,
@@ -33,7 +38,7 @@ export const styles = StyleSheet.create({
         color: colors.heading,
       },
       subHeading: {
-    //    fontFamily: 'HelveticaNeue',
+       fontFamily: fonts.font,
         fontSize: 16,
         fontWeight: '300',
         lineHeight: 26,
@@ -51,11 +56,11 @@ export const styles = StyleSheet.create({
       notificationContent: {
         color: colors.gray,
         fontSize: 14,
-      //  fontFamily: 'HelveticaNeue',
+       fontFamily: fonts.font,
       },
       link: {
         color: colors.primary,
         fontSize: 14,
-        //fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
       },
 });

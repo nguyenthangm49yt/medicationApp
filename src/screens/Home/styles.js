@@ -1,5 +1,9 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../config/colors';
+import {fonts} from '../../config/fonts';
+import { Platform } from 'react-native';
+
+
 
 export const styles = StyleSheet.create({
     container: {
@@ -13,13 +17,13 @@ export const styles = StyleSheet.create({
     },
     header: {},
     heading: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontSize: 28,
         fontWeight: 'bold',
         marginTop: 40,
     },
     subHeading: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontSize: 20,
         fontWeight: '300',
         marginTop: 10,
@@ -57,7 +61,7 @@ export const styles = StyleSheet.create({
     cardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
     },
     cardSubTitle: {
         marginTop: 10,
@@ -72,13 +76,13 @@ export const styles = StyleSheet.create({
     },
     footerTitle: {
         fontSize: 11,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
     },
     cardBtn: {
         borderRadius: 50,
     },
     btnLabel: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontSize: 12,
         paddingTop: 10,
         paddingBottom: 10,
@@ -112,7 +116,7 @@ export const styles = StyleSheet.create({
     },
     dailyTitle: {
         fontSize: 18,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         color: colors.white,
         fontWeight: 'bold',
         marginBottom: 10,
@@ -120,14 +124,14 @@ export const styles = StyleSheet.create({
     dailySubTitle: {
         color: colors.white,
         fontSize: 11,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
     },
     recommendWrapper: {
         marginTop: 40,
     },
     recommendTitle: {
         fontSize: 24,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         color: colors.heading,
         fontWeight: 'bold',
         marginBottom: 20,
@@ -140,7 +144,7 @@ export const styles = StyleSheet.create({
     recommednImgWrapper: {},
     recommentContentTitle: {
         fontSize: 18,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontWeight: 'bold',
         color: colors.heading,
         paddingTop: 10,
@@ -148,7 +152,7 @@ export const styles = StyleSheet.create({
     },
     recommentContentSubTitle: {
         fontSize: 11,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
 
         color: colors.gray,
     },

@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {PrimaryButton} from '../../components/buttons/PrimaryButton/PrimaryButton';
 import {SecondaryButton} from '../../components/buttons/SecondaryButton/SecondaryButton';
 import { colors } from '../../config/colors';
+import {fonts} from '../../config/fonts';
 import {PrimaryInput} from '../../components/forms/PrimaryInput/PrimaryInput';
 
-export const Login = () => {
+
+
+export default class Login  extends React.Component {
+
+  handleLogin = () => {
+    // TODO: Firebase stuff...
+    this.props.navigation.navigate('GettingStarted')
+  }
+  render() {
     return (
     <View style={styles.container}>
             <Image 
@@ -53,7 +62,9 @@ export const Login = () => {
                  <PrimaryInput placeHolder={'Password'} />
                 </View>
                 <View style={styles.loginBtnWrapper}>
-                  <PrimaryButton label={'LOG IN'} />
+                    <TouchableOpacity onPress={this.handleLogin}>
+                       <PrimaryButton label={'LOG IN'} />
+                    </TouchableOpacity>
                 </View>
                 <Text style={styles.forgotPassword}>Forgot Password?</Text>
             </View>
@@ -61,13 +72,16 @@ export const Login = () => {
           <View style={styles.footerWrapper}>
               <Text style={styles.footerText}>
                 <Text style={styles.footerText1}>ALREADY HAVE AN ACCOUNT?</Text>
-                <Text style={styles.footerText1}>SIGN UP</Text>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
+                   <Text style={styles.footerText1}>SIGN UP</Text>
+                </TouchableOpacity>
               </Text>
           </View>
          </View>
     </View>
          
     );
+    }
 };
 export const styles = StyleSheet.create({
     container: {
@@ -99,7 +113,7 @@ export const styles = StyleSheet.create({
         marginTop: 50,
       },
       heading: {
-     //   fontFamily: 'HelveticaNeue',
+     fontFamily: fonts.font,
         fontSize: 30,
         fontWeight: '700',
         lineHeight: 40,
@@ -116,7 +130,7 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 30,
         marginBottom: 30,
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontSize: 14,
         fontWeight: '700',
         lineHeight: 30,
@@ -129,14 +143,14 @@ export const styles = StyleSheet.create({
         marginTop: 10,
       },
       forgotPassword: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontWeight: '400',
         fontSize: 14,
         textAlign: 'center',
         marginTop: 20,
       },
       footerText: {
-        fontFamily: 'HelveticaNeue',
+        fontFamily: fonts.font,
         fontWeight: '400',
         fontSize: 14,
       },

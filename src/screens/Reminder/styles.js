@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../config/colors';
+import {fonts} from '../../config/fonts';
 export const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -10,13 +11,13 @@ export const styles = StyleSheet.create({
   headingWrapper: {},
   heading: {
     fontSize: 24,
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontWeight: 'bold',
     lineHeight: 30,
     color: colors.heading,
   },
   subHeading: {
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontSize: 16,
     fontWeight: '300',
     color: colors.gray,
@@ -42,7 +43,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dayTitle: {
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontSize: 14,
     padding: 10,
   },

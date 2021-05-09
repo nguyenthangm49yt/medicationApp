@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {colors} from '../../config/colors';
+import {fonts} from '../../config/fonts';
+
 export const styles = StyleSheet.create({
   container: {
     display: 'flex',
@@ -10,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   heading: {
     textAlign: 'center',
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontWeight: 'bold',
     fontSize: 28,
     color: colors.heading,
@@ -35,7 +37,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
     fontSize: 16,
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontWeight: '400',
   },
   meditateItemWrapperContainer: {
@@ -70,7 +72,7 @@ export const styles = StyleSheet.create({
   },
   dailyTitle: {
     fontSize: 18,
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     color: colors.heading,
     fontWeight: 'bold',
     marginBottom: 10,
@@ -78,7 +80,7 @@ export const styles = StyleSheet.create({
   dailySubTitle: {
     color: colors.heading,
     fontSize: 11,
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
   },
   medicationTypeCards: {
     flexDirection: 'row',
@@ -90,7 +92,7 @@ export const styles = StyleSheet.create({
     marginBottom: 0,
   },
   card1Txt: {
-    fontFamily: 'HelveticaNeue',
+    fontFamily: fonts.font,
     fontSize: 18,
     color: colors.white,
     position: 'relative',
