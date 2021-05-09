@@ -7,19 +7,25 @@ export const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        height: '100%',
+   
         width: '100%',
     },
     bg: {
-        padding: 20,
-        marginTop: 30,
-        flex: 1,
+        padding: 0,
+        marginTop: 0,
+        position: 'absolute',
+        
+    },
+    contentContainer: {
+      padding: 20,
+      marginTop: 30,
+      flex: 1,
     },
     logo: {
         alignSelf: 'center'
     },
     welcomeImage: {
-        marginTop: 50,
+        marginTop: 60,
         
       },
       top: {
@@ -62,5 +68,6 @@ export const styles = StyleSheet.create({
         color: colors.primary,
         fontSize: 14,
         fontFamily: fonts.font,
+        bottom: -4
       },
 });

@@ -111,6 +111,7 @@ export const styles = StyleSheet.create({
         display: 'flex',
         flex: 1,
         padding: 20,
+        paddingTop: 0,
       },
       vector1: {
         position: 'absolute',

@@ -84,16 +84,19 @@ export const styles =  StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-        padding: 110,
         backgroundColor: colors.primary,
+        padding: 20,
+        paddingTop: 0,
+        marginTop: 30,
+        
     },
     logoWrapper: {
-        marginTop: 30,
+       
+        marginTop: 20,
     },
     logoImage: {
+     
         alignSelf: 'center',
-        
-
     },
     welcomeMessage: {
         marginTop: 75,
@@ -171,8 +174,10 @@ export const styles =  StyleSheet.create({
       },
       bgWrapper: {
         position: 'absolute',
+       
         bottom: '10%',
-        width: '90%',
+        width: '80%',
         alignSelf: 'center',
+        
       },
 });
