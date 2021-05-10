@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, SafeAreaView, ScrollView,TouchableOpacity} from 'react-native';
-import {colors} from '../../config/colors';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import {styles} from './styles'
+import {styles} from '../Profile/styles'
 
 const Action = ({title, iconame, color}) => {
     
@@ -19,54 +19,46 @@ const Action = ({title, iconame, color}) => {
         </View>
     )
 }
-
 export default class Profile extends React.Component {
-    handleSetting = () => {
+    handleBack = () => {
         // TODO: Firebase stuff...
-        this.props.navigation.navigate('Setting')
+        this.props.navigation.navigate('index')
       }
-    render(){
+    render() {
     return (
         <SafeAreaView style={styles.container}>
             {/* Headers */}
             <View style={styles.header}>
-                <TouchableOpacity style={styles.headerRightBtnsWrapper}>
+                <TouchableOpacity 
+                style={styles.headerRightBtnsWrapper}
+                onPress={this.handleBack}>
                     
                     <MaterialCommunityIcons name="arrow-left-circle-outline" color="#36454f" size={35} />
                 </TouchableOpacity>  
-                <Text style={styles.headerTitle}>Profile</Text>
-                <TouchableOpacity 
-                style={styles.headerRightBtnsWrapper}
-                onPress={this.handleSetting}>
                
-                    <MaterialCommunityIcons name="cog-outline" color="#36454f" size={30} />
+                <Text style={styles.headerTitle}>Setting</Text>
+               
+                <TouchableOpacity style={styles.headerRightBtnsWrapper}>
+                    <MaterialCommunityIcons name="help-circle-outline" color="#36454f" size={30} />
                 </TouchableOpacity>
             </View>
 
              {/* content */}
             <ScrollView showsVerticalScrollIndicator={false}
                 contentContainerStyle={{paddingBottom:30}}>
-                      {/* user info */}
-                <View style={styles.userWrapper}>
-                    <View style={styles.image}>
-                        
-                    </View>
-                    <View style={styles.profileInfos}>
-                        <View style={styles.nameSection}>
-                            <Text style={styles.nameSectionAcc}>Name</Text>
-                            <Text>name@gmail.com</Text>
-                        </View>
-                    </View>
-                </View>
+                
                   {/* action */}
                 <TouchableOpacity style={styles.actions}>
-                    <Action title={'Like'} iconame={'heart-multiple-outline'} color={'#fe4a49'}/>
+                    <Action title={'Privacy Policy'} iconame={'book-open-variant'} color={'#fe4a49'}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.actions}>
-                    <Action title={'Playlists'} iconame={'playlist-music-outline'} color={'#283655'}/>
+                    <Action title={'About us'} iconame={'information-outline'} color={'#283655'}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.actions}>
-                    <Action title={'Edit Profile'} iconame={'account-edit-outline'} color={'#88d8b0'}/>
+                    <Action title={'Help'} iconame={'account-question'} color={'#88d8b0'}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.actions}>
+                    <Action title={'Sign out'} iconame={'logout-variant'} color={'#88d8b0'}/>
                 </TouchableOpacity>
                 
                 

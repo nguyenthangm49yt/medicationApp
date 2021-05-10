@@ -11,14 +11,8 @@ import  SplashScreen  from './src/screens/SplashScreen/SplashScreen';
 import  SignUp  from './src/screens/SignUp/SignUp';
 import  Login from './src/screens/Login/Login';
 import  GettingStarted  from './src/screens/GettingStarted/GettingStarted';
-import  Home  from './src/screens/Home/Home';
-import { CourseDetails } from './src/screens/CouserDetails/CousersDetails';
-import { Music } from './src/screens/Music';
-import { Meditate } from './src/screens/Meditate';
-import { ChooseTopic } from './src/screens/ChooseTopic';
-import { Reminder } from './src/screens/Reminder';
-import { Profile } from './src/screens/Profile';
 import {index} from './src/screens/index';
+import Setting from './src/screens/Setting/Setting';
 
 const Stack = createStackNavigator();
 // const Tab = createBottomTabNavigator();
@@ -89,6 +83,7 @@ export default function App() {
                   <Stack.Screen name="Login" component={Login} />
                   <Stack.Screen name="GettingStarted" component={GettingStarted} />
                   <Stack.Screen name="index" component={index} />
+                  <Stack.Screen name="Setting" component={Setting} />
 
             </Stack.Navigator>
               
