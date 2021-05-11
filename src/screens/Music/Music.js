@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions, TouchableOpacity} from 'react-native';
 import {colors} from '../../config/colors';
 import {styles} from './styles';
+import Slider from '@react-native-community/slider';
 
  export const Music = () => {
    return (
@@ -20,42 +21,54 @@ import {styles} from './styles';
             />
           
             <View style={styles.header}>
-                <View>
+                <TouchableOpacity>
                     <Image source={require('../../../assets/images/backWhite.png')} />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.headerRightBtnsWrapper}>
+                <TouchableOpacity>
                     <Image
                     style={{marginRight: 15}}
                     source={require('../../../assets/images/heartGray.png')}
                     ></Image>
-                    <Image source={require('../../../assets/images/downloadGray.png')} />
+                </TouchableOpacity>
+                    
                 </View>
             </View>
 
             <View style={styles.songContent}>
+                <Image source={require('../../../assets/images/album.png')}
+                style={{height:250,width:250, }}/>
                 <Text style={styles.title}>Focuss Attention</Text>
                 <Text style={styles.subTitle}>7 DAYS OF CALM</Text>
             </View>
             <View style={styles.playerControlWrapper}>
                 <View style={styles.playerControl}>
+                    <TouchableOpacity>
                     <Image source={require('../../../assets/images/fastBackward.png')} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
                     <Image source={require('../../../assets/images/playOrStop.png')} />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
                     <Image source={require('../../../assets/images/fastForward.png')} />
+                    </TouchableOpacity>
                 </View>
             </View>
 
             <View style={styles.progressBar}>
-                <View style={styles.bar}>
-                    <Image
-                    style={styles.progressDot}
-                    source={require('../../../assets/images/dot.png')}
-                    />
-                </View>
-                <View style={styles.progressCompleted} />
+               
+                <Slider
+                style={{width: 350, height: 40, }}
+                minimumValue={0}
+                maximumValue={1}
+                minimumTrackTintColor="#8E97FD"
+                maximumTrackTintColor= "#dddddd"
+                />
                 <View style={styles.timerWrapper}>
                     <Text>1:30</Text>
                     <Text>45:00</Text>
                 </View>
+
             </View>
        </View>
    );  

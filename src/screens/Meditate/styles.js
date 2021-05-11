@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     padding: 20,
-    marginTop: 40,
+    marginTop: 20,
     width: '100%',
   },
   heading: {
@@ -83,20 +83,28 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.font,
   },
   medicationTypeCards: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     //
     paddingTop: 10,
+   
   },
   card: {
-    marginBottom: 0,
+    marginBottom: 25,
+    marginRight: 10
+    //backgroundColor: "#ccc",
+  },
+  cardImg: {
+    borderRadius:10,
+    width:170,
+    height:150,
   },
   card1Txt: {
     fontFamily: fonts.font,
     fontSize: 18,
     color: colors.white,
-    position: 'relative',
-    bottom: 35,
+    position: 'absolute',
+    bottom: 10,
     left: 15,
     fontWeight: 'bold',
   },

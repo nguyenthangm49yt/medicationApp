@@ -3,33 +3,41 @@ import {View, Text, StyleSheet, Image, SafeAreaView, ScrollView,TouchableOpacity
 import {colors} from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {styles} from './styles'
-import {PrimaryInput} from '../../components/forms/PrimaryInput'
-const InfoBox = ({title, iconame, color}) => {
-    
+import {EditForm} from '../../components/forms//EditForm/EditForm';
+
+
+const InfoBox = ({title,placeHolder,value}) => {
+
     return(
-        <View style={styles.infoBox}>
-                    <PrimaryInput
-                          placeHolder={'User Name'}
-                          isValid={true}
-                          value={"name"}
-                      />
-                      <PrimaryInput
-                          placeHolder={'Email'}
-                          isValid={true}
-                          value={"name@gmail.com"}
-                      />
-                      <PrimaryInput
-                          placeHolder={'Phone Number'}
-                          isValid={true}
-                          value={"0355646464"}
-                      />
+        <View>
+            {/* title of infoBox */}
+            <View style={styles.titleForm}>
+                <Text style={{fontSize:18}}>{title}</Text>
+            </View>
+
+            {/* info */}
+            <View style={styles.infoBox}>
+                <View style={styles.form}>
+                    <EditForm 
+                        placeHolder={placeHolder}
+                        
+                        value={value}
+                    />
+                </View>
+                   
+                        
+            </View>
         </View>
     )
 }
 
 export default class EditProfile extends React.Component {
+    handleBack = () => {
+        // TODO:.
+        this.props.navigation.goBack();
+      }
     handleSave = () => {
-        // TODO: Firebase stuff...
+        // TODO: 
         Alert.alert(
             "Save",
             "Are you sure?",
@@ -43,20 +51,18 @@ export default class EditProfile extends React.Component {
             ]
         );
       }
-    handleAction = () => {
-        // TODO: Firebase stuff...
-        this.props.navigation.navigate('Playlists')
-      }
+    
     render(){
     return (
         <SafeAreaView style={styles.container}>
             {/* Headers */}
             <View style={styles.header}>
-                <TouchableOpacity style={styles.headerRightBtnsWrapper}>
+                <TouchableOpacity style={styles.headerRightBtnsWrapper}
+                onPress={this.handleBack}>
                     
                     <MaterialCommunityIcons name="arrow-left-circle-outline" color="#36454f" size={35} />
                 </TouchableOpacity>  
-                <Text style={styles.headerTitle}>Edit your Infomation</Text>
+                <Text style={styles.headerTitle}>Edit your Profile</Text>
                 <TouchableOpacity 
                 style={styles.headerRightBtnsWrapper}
                 onPress={this.handleSave}>
@@ -68,7 +74,7 @@ export default class EditProfile extends React.Component {
              {/* content */}
             <ScrollView showsVerticalScrollIndicator={false}
                 contentContainerStyle={{paddingBottom:30}}>
-                      {/* user info */}
+                {/* user name and email */}
                 <View style={styles.userWrapper}>
                      
                         <Image style={styles.image} source={require('../../../assets/images/user.png')}/>
@@ -80,11 +86,12 @@ export default class EditProfile extends React.Component {
                         </View>
                     </View>
                 </View>
-                  {/* action */}
-                  <TouchableOpacity style={styles.actions}
-                    onPress={this.handleAction}>
-                        <InfoBox title={'Like'} iconame={'heart-multiple-outline'} color={'#fe4a49'}/>
-                  </TouchableOpacity>
+
+                  {/* info list of user */}
+                 <InfoBox title={'Name'} placeHolder={'name'} value={'username'} />
+                 <InfoBox title={'Email'} placeHolder={'name@gmail.com'} value={'name@gmail.com'} />
+                 <InfoBox title={'Phone'} placeHolder={'Phone'} value={'0123456789'} />
+                 
                
                 
                 

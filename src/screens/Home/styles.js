@@ -13,14 +13,16 @@ export const styles = StyleSheet.create({
     },
     logo: {
         alignSelf: 'center',
-        marginTop: 30,
+        marginTop: 20,
     },
-    header: {},
+    header: {
+        //backgroundColor: colors.primary,
+    },
     heading: {
         fontFamily: fonts.font,
         fontSize: 28,
         fontWeight: 'bold',
-        marginTop: 40,
+        marginTop: 20,
     },
     subHeading: {
         fontFamily: fonts.font,
@@ -92,12 +94,13 @@ export const styles = StyleSheet.create({
     },
     dailyThoughtsWrapper: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        //justifyContent: 'space-around',
         backgroundColor: colors.darkBg,
         alignItems: 'center',
         height: 95,
         borderRadius: 10,
-        marginTop: 10,
+        marginTop: 0,
+    
     },
     bgShape1: {
         position: 'absolute',
@@ -114,6 +117,10 @@ export const styles = StyleSheet.create({
         right: '40%',
         bottom: 0,
     },
+    daily:{
+        paddingLeft:10,
+        flexDirection:"row",
+    },
     dailyTitle: {
         fontSize: 18,
         fontFamily: fonts.font,
@@ -128,6 +135,7 @@ export const styles = StyleSheet.create({
     },
     recommendWrapper: {
         marginTop: 40,
+        
     },
     recommendTitle: {
         fontSize: 24,
@@ -136,12 +144,15 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
     },
-    recommedCard: {
-        borderRadius: 10,
+    recommendCard: {
+       
         width: 160,
         marginRight: 20,
+        
     },
-    recommednImgWrapper: {},
+    recommendImgWrapper: {
+        borderRadius: 10,
+    },
     recommentContentTitle: {
         fontSize: 18,
         fontFamily: fonts.font,

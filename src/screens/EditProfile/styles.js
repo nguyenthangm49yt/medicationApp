@@ -50,26 +50,21 @@ export const styles = StyleSheet.create({
    fontSize:20
 },
     infoBox: {
-      marginTop: 20,
+      marginTop: 2,
       paddingHorizontal: 5,
-      flexDirection: 'column',
+      flexDirection: 'row',
      // backgroundColor: "#fe9c8f",
   },
-  iconContainer: {
-      width: 40,
-      height: 40,
-      borderRadius: 6,
-  },
-  moreIcon: {
-    color: "#d6d7da",
-    position: 'absolute',
-    left:320,
+  titleForm:{
+    marginTop:10,
+    marginLeft:6,
+    //backgroundColor: "#fe9c8f",
     
   },
-  actionTitle: {
-      marginLeft:5,
-      marginTop: 3,
-      fontSize: 16,
+  form:{
+    width:340,
+    height: 60,
   },
+  
 
 });

@@ -35,7 +35,7 @@ export function index() {
         options={{
           tabBarLabel: 'Meditate',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            <MaterialCommunityIcons name="egg-easter" color={color} size={size} />
           ),
         }}
       />
@@ -45,7 +45,7 @@ export function index() {
         options={{
           tabBarLabel: 'Music',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
+            <MaterialCommunityIcons name="music-box-multiple-outline" color={color} size={size} />
           ),
         }}
       />

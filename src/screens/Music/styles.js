@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   songContent: {
     alignItems: 'center',
-    marginTop: '80%',
+    marginTop: '10%',
   },
   title: {
     fontFamily: fonts.font,
@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     marginTop: '15%',
   },
   progressBar: {
-    marginTop: '10%',
+    marginTop: 10,
   },
   bar: {
     height: 1,

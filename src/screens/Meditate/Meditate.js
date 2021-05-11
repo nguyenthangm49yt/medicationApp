@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import {colors} from '../../config/colors';
 import {styles} from './styles';
 
@@ -47,9 +48,11 @@ export const Meditate = () => {
                     horizontal={true}
                 >
                 {meditateTypes.map((item) => {
+                   
                     return(
                         <View style={styles.meditateItemWrapper}>
-                        <View
+                        <TouchableOpacity
+                          
                             style={[
                                 styles.meditateItem,
                                 {
@@ -58,8 +61,8 @@ export const Meditate = () => {
                                     : colors.gray,
                                 },
                             ]}>
-                            <Image source={item.imageUrl} />
-                            </View>
+                             <Image source={item.imageUrl} />
+                            </TouchableOpacity>
                             <Text
                             style={[
                                 styles.itemTitle,
@@ -74,62 +77,97 @@ export const Meditate = () => {
                 </ScrollView>
             </View>
 
-            <View style={styles.dailyThoughtWrapper}>
-                <Image
-                    style={styles.bgShape1}
-                    source={require('../../../assets/images/bgShape4.png')}
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={styles.dailyThoughtsWrapper}>
+                    <Image
+                        style={styles.bgShape1}
+                        source={require('../../../assets/images/bgShape4.png')}
+                        />
+                    <Image
+                        style={styles.bgShape2}
+                        source={require('../../../assets/images/bgShape5.png')}
+                        />
+                    <Image
+                        style={styles.bgShape3}
+                        source={require('../../../assets/images/bgShape6.png')}
                     />
-                <Image
-                    style={styles.bgShape2}
-                    source={require('../../../assets/images/bgShape5.png')}
-                    />
-                <Image
-                    style={styles.bgShape3}
-                    source={require('../../../assets/images/bgShape6.png')}
-                />
-                
-                <View >
-                    <Text style={styles.dailyTitle}>Daily Thought</Text>
-                    <Text style={styles.dailySubTitle}>MEDITATION - 3-10 MIN</Text>
-                </View>
-                <View>
-                    <Image source={require('../../../assets/images/player.png')} />
-                </View>
-            </View>
-
-            <View style={styles.medicationTypeCards}>
-                <View >
-                    <View style={styles.card}>
-                        <Image
-                        source={require('../../../assets/images/medicationTypes/bg1.png')}
-                        />
-                        <Text style={styles.card1Txt}>7 Days of calm</Text>
-                    </View>
                     
-                    <View style={styles.card}>
-                        <Image
-                        source={require('../../../assets/images/medicationTypes/bg2.png')}
-                        />
-                        <Text style={styles.card1Txt}>Anxiet Release</Text>
+                    <View >
+                        <Text style={styles.dailyTitle}>Daily Thought</Text>
+                        <Text style={styles.dailySubTitle}>MEDITATION - 3-10 MIN</Text>
                     </View>
-                </View>
-                <View>
-                    <View style={styles.card}>
-                        <Image
-                        source={require('../../../assets/images/medicationTypes/bg2.png')}
-                        />
-                        <Text style={styles.card1Txt}>Stress Removal</Text>
-                    </View>
-                    
-                    <View style={styles.card}>
-                        <Image
-                        source={require('../../../assets/images/medicationTypes/bg1.png')}
-                        />
-                        <Text style={styles.card1Txt}>Morning Meditate</Text>
+                    <View>
+                        <Image source={require('../../../assets/images/player.png')} />
                     </View>
                 </View>
 
-            </View>
+                <View style={styles.medicationTypeCards}>
+                    <View style={{flexDirection: 'row'}} >
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg1.png')}
+                            />
+                            <Text style={styles.card1Txt}>7 Days of calm</Text>
+                        </View>
+                        
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg2.png')}
+                            />
+                            <Text style={styles.card1Txt}>Anxiet Release</Text>
+                        </View>
+                    </View>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg2.png')}
+                            />
+                            <Text style={styles.card1Txt}>Stress Removal</Text>
+                        </View>
+                        
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg1.png')}
+                            />
+                            <Text style={styles.card1Txt}>Morning Meditate</Text>
+                        </View>
+                        
+                    </View>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg2.png')}
+                            />
+                            <Text style={styles.card1Txt}>Stress Removal</Text>
+                        </View>
+                        
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg1.png')}
+                            />
+                            <Text style={styles.card1Txt}>Morning Meditate</Text>
+                        </View>
+                        
+                    </View>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg2.png')}
+                            />
+                            <Text style={styles.card1Txt}>Stress Removal</Text>
+                        </View>
+                        
+                        <View style={styles.card}>
+                            <Image style={styles.cardImg}
+                            source={require('../../../assets/images/medicationTypes/bg1.png')}
+                            />
+                            <Text style={styles.card1Txt}>Morning Meditate</Text>
+                        </View>
+                        
+                    </View>
+
+                </View>
+            </ScrollView>
           
         </View>
     );
