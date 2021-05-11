@@ -13,6 +13,8 @@ import  Login from './src/screens/Login/Login';
 import  GettingStarted  from './src/screens/GettingStarted/GettingStarted';
 import {index} from './src/screens/index';
 import Setting from './src/screens/Setting/Setting';
+import Playlists from './src/screens/Playlists/Playlists';
+import EditProfile from './src/screens/EditProfile/EditProfile';
 
 const Stack = createStackNavigator();
 // const Tab = createBottomTabNavigator();
@@ -84,6 +86,8 @@ export default function App() {
                   <Stack.Screen name="GettingStarted" component={GettingStarted} />
                   <Stack.Screen name="index" component={index} />
                   <Stack.Screen name="Setting" component={Setting} />
+                  <Stack.Screen name="Playlists" component={Playlists} />
+                  <Stack.Screen name="EditProfile" component={EditProfile} />
 
             </Stack.Navigator>
               

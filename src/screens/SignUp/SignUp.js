@@ -88,7 +88,7 @@ export default class SignUp  extends React.Component {
 
                   <View style={styles.privacyPolicyCheckWrapper}>
                       <TouchableOpacity style={styles.privacyPolicyLabelWrapper}>
-                          <Text style={styles.subTitle}>i have read the</Text>
+                          <Text style={styles.subTitle}>I have read the</Text>
                           <Text style={styles.link}>Privace Policy</Text>
                       </TouchableOpacity>
                       <Image 
@@ -184,6 +184,7 @@ export const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '400',
         color: colors.primary,
+        marginLeft:5,
       },
       privacyPolicyLabelWrapper: {
         flexDirection: 'row',

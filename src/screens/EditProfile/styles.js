@@ -49,10 +49,10 @@ export const styles = StyleSheet.create({
    color: colors.white,
    fontSize:20
 },
-  actions: {
+    infoBox: {
       marginTop: 20,
       paddingHorizontal: 5,
-      flexDirection: 'row',
+      flexDirection: 'column',
      // backgroundColor: "#fe9c8f",
   },
   iconContainer: {

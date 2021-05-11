@@ -87,12 +87,12 @@ export const styles =  StyleSheet.create({
         backgroundColor: colors.primary,
         padding: 20,
         paddingTop: 0,
-        marginTop: 30,
+        
         
     },
     logoWrapper: {
        
-        marginTop: 20,
+        marginTop: 40,
     },
     logoImage: {
      

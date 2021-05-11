@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
       flex:1,
       padding:20
   },
-  profileInfos: {
+  playlistInfos: {
       marginTop: 16,
       paddingHorizontal: 29,
   },
@@ -25,29 +25,29 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 8,
   },
-  userWrapper: {
+  headerPlaylistWrapper: {
     backgroundColor: colors.primary,
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginTop: 30,
     padding: 10,
+    alignItems: 'center',
   },
   image:{
-      width:120,
-      height:120,
-      borderRadius:60,
+      width:200,
+      height:200,
       borderColor:'#dddddd',
       borderWidth:1,
+      borderRadius: 4,
       backgroundColor:"#dcdcdc",
       
   },
   nameSection: {
-      
-      marginLeft: 1,
-      marginTop:10,
+    alignItems: 'center',
+    marginTop:10,
   },
-  nameSectionAcc: {
+  nameSectionTitle: {
    color: colors.white,
-   fontSize:20
+   fontSize:25,
 },
   actions: {
       marginTop: 20,
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
       flexDirection: 'row',
      // backgroundColor: "#fe9c8f",
   },
-  iconContainer: {
+  musicImg: {
       width: 40,
       height: 40,
       borderRadius: 6,
@@ -66,10 +66,18 @@ export const styles = StyleSheet.create({
     left:320,
     
   },
+  
   actionTitle: {
-      marginLeft:5,
-      marginTop: 3,
-      fontSize: 16,
+    marginLeft:0,
+    marginTop: -12,
+    padding:10,
+   // backgroundColor: colors.facebookBg,
   },
+  actionTitleName:{
+     fontSize: 16,
+  },
+  actionTitleAuthor:{
+    fontSize: 10,
+ },
 
 });

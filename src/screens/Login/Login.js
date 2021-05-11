@@ -71,10 +71,13 @@ export default class Login  extends React.Component {
 
           <View style={styles.footerWrapper}>
               <Text style={styles.footerText}>
-                <Text style={styles.footerText1}>ALREADY HAVE AN ACCOUNT?</Text>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
-                   <Text style={styles.footerText1}>SIGN UP</Text>
+                <View>
+                   <Text style={styles.footerText1}>ALREADY HAVE AN ACCOUNT?</Text>
+                </View>
+                <TouchableOpacity  onPress={() => this.props.navigation.navigate('SignUp')}>
+                    <Text style={styles.footerText2}>SIGN UP</Text>
                 </TouchableOpacity>
+                
               </Text>
           </View>
          </View>
@@ -157,17 +160,24 @@ export const styles = StyleSheet.create({
         fontWeight: '400',
         fontSize: 14,
       },
+      footerWrapper: {
+        position: 'relative',
+        marginTop:25,
+      
+       
+        alignItems: 'center',
+
+      },
       footerText1: {
         color: colors.gray,
+        
+ 
       },
       footerText2: {
         color: colors.primary,
+    
+        marginLeft: 5,
+     
       },
-      footerWrapper: {
-        position: 'absolute',
-        bottom: 60,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-      },
+      
 });

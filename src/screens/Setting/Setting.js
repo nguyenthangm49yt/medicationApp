@@ -22,7 +22,7 @@ const Action = ({title, iconame, color}) => {
 export default class Profile extends React.Component {
     handleBack = () => {
         // TODO: Firebase stuff...
-        this.props.navigation.navigate('index')
+        this.props.navigation.goBack();
       }
     render() {
     return (

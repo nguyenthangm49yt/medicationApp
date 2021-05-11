@@ -1,37 +1,51 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, SafeAreaView, ScrollView,TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, SafeAreaView, ScrollView,TouchableOpacity, Alert} from 'react-native';
 import {colors} from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {styles} from './styles'
-
-const Action = ({title, iconame, color}) => {
+import {PrimaryInput} from '../../components/forms/PrimaryInput'
+const InfoBox = ({title, iconame, color}) => {
     
     return(
-        <View style={styles.actions}>
-                <View style={styles.iconContainer}>
-                    <MaterialCommunityIcons name={iconame} color={color} size={30} />
-                
-                </View>
-                
-                <Text style={styles.actionTitle}>{title}</Text>
-            
-                <MaterialCommunityIcons name="chevron-right" color={color} size={30} style={styles.moreIcon}/> 
+        <View style={styles.infoBox}>
+                    <PrimaryInput
+                          placeHolder={'User Name'}
+                          isValid={true}
+                          value={"name"}
+                      />
+                      <PrimaryInput
+                          placeHolder={'Email'}
+                          isValid={true}
+                          value={"name@gmail.com"}
+                      />
+                      <PrimaryInput
+                          placeHolder={'Phone Number'}
+                          isValid={true}
+                          value={"0355646464"}
+                      />
         </View>
     )
 }
 
-export default class Profile extends React.Component {
-    handleSetting = () => {
+export default class EditProfile extends React.Component {
+    handleSave = () => {
         // TODO: Firebase stuff...
-        this.props.navigation.navigate('Setting')
+        Alert.alert(
+            "Save",
+            "Are you sure?",
+            [
+            {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+        );
       }
     handleAction = () => {
         // TODO: Firebase stuff...
         this.props.navigation.navigate('Playlists')
-      }
-      handleAction3 = () => {
-        // TODO: Firebase stuff...
-        this.props.navigation.navigate('EditProfile')
       }
     render(){
     return (
@@ -42,12 +56,12 @@ export default class Profile extends React.Component {
                     
                     <MaterialCommunityIcons name="arrow-left-circle-outline" color="#36454f" size={35} />
                 </TouchableOpacity>  
-                <Text style={styles.headerTitle}>Profile</Text>
+                <Text style={styles.headerTitle}>Edit your Infomation</Text>
                 <TouchableOpacity 
                 style={styles.headerRightBtnsWrapper}
-                onPress={this.handleSetting}>
+                onPress={this.handleSave}>
                
-                    <MaterialCommunityIcons name="cog-outline" color="#36454f" size={30} />
+                    <MaterialCommunityIcons name="content-save-edit-outline" color="#36454f" size={30} />
                 </TouchableOpacity>
             </View>
 
@@ -67,18 +81,11 @@ export default class Profile extends React.Component {
                     </View>
                 </View>
                   {/* action */}
-                <TouchableOpacity style={styles.actions}
-                onPress={this.handleAction}>
-                    <Action title={'Like'} iconame={'heart-multiple-outline'} color={'#fe4a49'}/>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actions}
-                onPress={this.handleAction}>
-                    <Action title={'Playlists'} iconame={'playlist-music-outline'} color={'#283655'}/>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.actions} 
-                onPress={this.handleAction3}> 
-                    <Action title={'Edit Profile'} iconame={'account-edit-outline'} color={'#88d8b0'}/>
-                </TouchableOpacity>
+                  <TouchableOpacity style={styles.actions}
+                    onPress={this.handleAction}>
+                        <InfoBox title={'Like'} iconame={'heart-multiple-outline'} color={'#fe4a49'}/>
+                  </TouchableOpacity>
+               
                 
                 
             </ScrollView>
