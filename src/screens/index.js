@@ -7,7 +7,7 @@ import { Home }  from './Home/Home';
 import { Music } from '../screens/Music/Music';
 import { Meditate } from '../screens/Meditate/Meditate';
 import  Profile  from '../screens/Profile/Profile';
-
+import {FindScreen } from '../screens/FindScreen/FindScreen'
 const Tab = createBottomTabNavigator();
 
 export function index() {
@@ -40,12 +40,12 @@ export function index() {
         }}
       />
       <Tab.Screen
-        name="Music"
-        component={Music}
+        name="FindScreen"
+        component={FindScreen}
         options={{
-          tabBarLabel: 'Music',
+          tabBarLabel: 'Find',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="music-box-multiple-outline" color={color} size={size} />
+            <MaterialCommunityIcons name="file-find-outline" color={color} size={size} />
           ),
         }}
       />

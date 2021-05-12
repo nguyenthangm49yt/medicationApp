@@ -3,12 +3,15 @@ import {View, Text, StyleSheet, TextInput, Image,TouchableOpacity} from 'react-n
 import {colors} from '../../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export const EditForm = (props) => {
+export const FindForm = (props) => {
     const {placeHolder, value} = props;
     const [text, onChangeText] = React.useState(value);
     
     return (
         <View style={styles.container}>
+            <View style={{marginLeft:5,}}>
+                <MaterialCommunityIcons name="search-web" color="#ccc" size={28} /> 
+            </View>
             <TextInput value={text}
                 onChangeText={onChangeText}
                 style={styles.input}
@@ -26,25 +29,26 @@ export const styles = StyleSheet.create({
     container: {
       display: 'flex',
       backgroundColor: '#eeeeee',
-      borderRadius: 15,
+      borderRadius: 90,
       justifyContent: 'space-between',
+      alignItems: 'center',
+    
       borderColor: '#dddddd',
       borderWidth: 1,
       flexDirection: 'row',
     },
     input: {
-      padding: 20,
-    //backgroundColor: "#dccddc",
-      width:"90%",
+        
+      padding: 5,
+     // backgroundColor: "#dccddc",
+      width:"79%",
     },
     clearBtn:{
-      width:40,
-      height:40,
+      width:30,
+      height:30,
       color: "#d6d7da",
       position: 'relative',
-      left:2,
-      top:10,  
-      padding:10,
+      padding:5,
     //  backgroundColor: "#ddd",
       
     },
