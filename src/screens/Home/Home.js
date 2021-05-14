@@ -2,9 +2,87 @@ import React from 'react';
 import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import {colors} from '../../config/colors';
 import {styles} from './styles';
+import { Audio } from 'expo-av';
 
-export const Home = () => {
-    
+
+const Recommend = [
+    {
+        title: 'Wild Dream',
+        author: 'Taylor Swift',
+        imageUrl: require('../../../assets/images/album.png'),
+        musicUrl: require('../../../assets/music/wild-dream.mp3'),
+    },
+    {
+        title: 'See You Again',
+        author: 'Charlie Puth',
+        imageUrl: require('../../../assets/images/album.png'),
+        musicUrl: require('../../../assets/music/see-you-again.mp3'),
+    },
+    {
+        title: 'A Thousand Year',
+        author: 'Christina Perri',
+        imageUrl: require('../../../assets/images/album.png'),
+        musicUrl: require('../../../assets/music/A-Thousand-Years.mp3'),
+    },
+    {
+        title: 'USUK',
+        author: 'Taylor Swift',
+        imageUrl: require('../../../assets/images/album.png'),
+        musicUrl: require('../../../assets/music/wild-dream.mp3'),
+    },
+    {
+        title: 'USUK',
+        author: 'Taylor Swift',
+        imageUrl: require('../../../assets/images/album.png'),
+        musicUrl: require('../../../assets/music/wild-dream.mp3'),
+      },
+]
+
+const MusicItem  = (props) => {
+    const {imageUrl, author, title, musicUrl} = props;
+    const [sound, setSound] = React.useState();
+
+    async function playSound() {
+        console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync(
+        require('../../../assets/music/wild-dream.mp3')
+        );
+        setSound(sound);
+
+        console.log('Playing Sound');
+        await sound.playAsync(); }
+
+    React.useEffect(() => {
+        return sound
+        ? () => {
+            console.log('Unloading Sound');
+            sound.unloadAsync(); }
+        : undefined;
+    }, [sound]);
+
+
+    // phan hien thi
+    return (
+        <TouchableOpacity style={styles.recommendItem} 
+        onPress={playSound} >
+            <View >
+                <Image source={imageUrl} style={styles.imageMusic}/>
+            </View>
+                
+            <Text
+                style={styles.title}>
+                {title}
+            </Text>
+            <Text
+                style={styles.author}>
+                {author}
+            </Text>
+        </TouchableOpacity>
+    );
+};
+
+export default function Home () {
+    //const [sound, setSound] = React.useState();
     return (
         <View style={styles.container}>
             <Image
@@ -97,41 +175,12 @@ export const Home = () => {
                         style={{left:170, top:5}}/>
                     </View>
                 </TouchableOpacity>
+                
                 <View style={styles.recommendWrapper}>
                     <Text style={styles.recommendTitle}>Recommend for you</Text>
-                    <ScrollView horizontal={true}>
-                        <View style={styles.recommendCard}>
-                            <View style={[
-                                        styles.recommendImgWrapper,
-                                        {backgroundColor: '#afdbc5'},
-                            ]}>
-                                <Image source={require('../../../assets/images/recommend1.png')}/>
-                            </View>
-                            <View style={styles.recommendCardContentWrapper}>
-                                <Text style={styles.recommentContentTitle}>Focus</Text>
-                                <Text style={styles.recommentContentSubTitle}>
-                                    MEDITATION - 3-10 MIN
-                                </Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.recommendCard}>
-                            <View style={[
-                                        styles.recommendImgWrapper,
-                                        {backgroundColor: '#fcdea5'},
-                            ]}>
-                                <Image source={require('../../../assets/images/recommend2.png')}/>
-                            </View>
-                            <View style={styles.recommendCardContentWrapper}>
-                                <Text style={styles.recommentContentTitle}>Happiness</Text>
-                                <Text style={styles.recommentContentSubTitle}>
-                                    MEDITATION - 3-10 MIN
-                                </Text>
-                            </View>
-                        </View>
-
-                        <View style={styles.recommendCard}>
-                            <View style={[
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>            
+                        {/* <View style={styles.recommendCard}>
+                            {/* <View style={[
                                         styles.recommendImgWrapper,
                                         {backgroundColor: '#afdbc5'},
                             ]}>
@@ -144,11 +193,42 @@ export const Home = () => {
                                     
                                 </Text>
                                 
-                            </View>
-                        </View>
+                            </View> 
+                        </View> */}
+                    {Recommend.map((item, index) => {
 
+                        return(
+                            <MusicItem key={index}
+                            imageUrl={item.imageUrl} 
+                            author={item.author} 
+                            title={item.title} 
+                            musicUrl={item.musicUrl} />
+                        );
+                        })
+                    }
+                    
                     </ScrollView>
                 </View>
+
+                <View style={styles.recommendWrapper}>
+                    <Text style={styles.recommendTitle}>US UK popular song</Text>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>            
+                   
+                    {Recommend.map((item, index) => {
+
+                        return(
+                            <MusicItem key={index}
+                            imageUrl={item.imageUrl} 
+                            author={item.author} 
+                            title={item.title} 
+                            musicUrl={item.musicUrl} />
+                        );
+                        })
+                    }
+                    
+                    </ScrollView>
+                </View>
+                
             </ScrollView>
         </View>
     );

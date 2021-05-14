@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 
-import { StyleSheet, Text, View , Button} from 'react-native';
+import { StyleSheet, Text, View , Button,LogBox } from 'react-native';
 import  SplashScreen  from './src/screens/SplashScreen/SplashScreen';
 import  SignUp  from './src/screens/SignUp/SignUp';
 import  Login from './src/screens/Login/Login';
@@ -15,6 +15,7 @@ import {index} from './src/screens/index';
 import Setting from './src/screens/Setting/Setting';
 import Playlists from './src/screens/Playlists/Playlists';
 import EditProfile from './src/screens/EditProfile/EditProfile';
+LogBox.ignoreLogs(['Remote debugger']);
 
 const Stack = createStackNavigator();
 // const Tab = createBottomTabNavigator();

@@ -145,7 +145,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
     },
     recommendCard: {
-       
+       backgroundColor:"#ccc",
         width: 160,
         marginRight: 20,
         
@@ -167,4 +167,29 @@ export const styles = StyleSheet.create({
 
         color: colors.gray,
     },
+    recommendItem: {
+        //backgroundColor:"#ccc",
+         width: 150,
+         height: 140,
+         marginRight: 20,
+         
+     },
+    author:{
+        position:'relative',
+       
+        fontSize: 14,
+       
+    },
+    title:{
+       // backgroundColor: "#DDDDDD",
+        position: 'relative',
+        fontWeight: 'bold',
+        fontSize: 16,
+        marginTop:-20,
+    },
+    imageMusic:{
+        
+        width: '100%',
+        height: '80%',
+    }
 });

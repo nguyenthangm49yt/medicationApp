@@ -47,11 +47,11 @@ export const Meditate = () => {
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
                 >
-                {meditateTypes.map((item) => {
+                {meditateTypes.map((item, index) => {
                    
                     return(
                         <View style={styles.meditateItemWrapper}>
-                        <TouchableOpacity
+                        <TouchableOpacity key={index}
                           
                             style={[
                                 styles.meditateItem,
