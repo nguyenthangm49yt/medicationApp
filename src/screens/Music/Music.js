@@ -7,6 +7,8 @@ import Slider from '@react-native-community/slider';
  export const Music = () => {
    return (
        <View style={styles.container}>
+
+           {/* background */}
            <Image
             source={require('../../../assets/images/bgShape7.png')}
             style={styles.bgImage1}
@@ -19,7 +21,9 @@ import Slider from '@react-native-community/slider';
                 source={require('../../../assets/images/bgShape9.png')}
                 style={styles.bgImage3}
             />
-          
+
+
+            {/* header */}  
             <View style={styles.header}>
                 <TouchableOpacity>
                     <Image source={require('../../../assets/images/backWhite.png')} />
@@ -35,12 +39,15 @@ import Slider from '@react-native-community/slider';
                 </View>
             </View>
 
+            {/* CONTENT */}
             <View style={styles.songContent}>
                 <Image source={require('../../../assets/images/album.png')}
                 style={{height:250,width:250, }}/>
-                <Text style={styles.title}>Focuss Attention</Text>
+                <Text style={styles.title}>SONG NAME</Text>
                 <Text style={styles.subTitle}>7 DAYS OF CALM</Text>
             </View>
+
+            {/* PLAYBAR */}
             <View style={styles.playerControlWrapper}>
                 <View style={styles.playerControl}>
                     <TouchableOpacity>
@@ -73,3 +80,4 @@ import Slider from '@react-native-community/slider';
        </View>
    );  
  };
+

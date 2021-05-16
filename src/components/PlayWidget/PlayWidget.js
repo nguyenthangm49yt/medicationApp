@@ -1,121 +1,146 @@
 import React  from 'react';
-import {View, Text, TouchableOpacity, StyleSheet,Image, BackHandler} from 'react-native';
+import {SafeAreaView, View, Text, TouchableOpacity, StyleSheet,Image, BackHandler} from 'react-native';
 import {colors} from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
+import { AppStatus } from '../../../AppStatus';
+import { useNavigation } from '@react-navigation/native';
 
-
-const song_ =     {
-        title: 'Wild Dream',
-        author: 'Taylor Swift',
-        imageUrl: require('../../../assets/images/album.png'),
-        musicUrl: require('../../../assets/music/wild-dream.mp3'),
-    }
-
+const Recommend = [
+      {
+          id: '1',
+          title: 'Wild Dream',
+          author: 'Taylor Swift',
+          imageUrl: require('../../../assets/images/album.png'),
+          musicUrl: require('../../../assets/music/wild-dream.mp3'),
+      },
+      {
+          id: '2',
+          title: 'See You Again',
+          author: 'Charlie Puth',
+          imageUrl: require('../../../assets/images/album1.jpg'),
+          musicUrl: require('../../../assets/music/see-you-again.mp3'),
+      },
+      {
+          id: '3',
+          title: 'A Thousand Year',
+          author: 'Christina Perri',
+          imageUrl: require('../../../assets/images/album2.jpg'),
+          musicUrl: require('../../../assets/music/A-Thousand-Years.mp3'),
+      },
+      
+  ]
 const PlayComponent = () => {
-    const [song, setSong] = React.useState(song_);
-    const [isPlaying , setIsPlaying ] = React.useState(false);
-    const [isLiked , setIsLike ] = React.useState('heart-outline');
+
+    const [song, setSong] = React.useState();
+    const [isPlaying , setIsPlaying ] = React.useState(true);
+    const [isLiked , setIsLike ] = React.useState(false);
     const [sound, setSound] = React.useState();
     const [duration, setDuration] = React.useState();
     const [position, setPosition] = React.useState();
-    
-    React.useEffect(() => {
-        const fetchSong = async () => {
-          setSong(song_);
-        }
-          fetchSong();
-      }, [])
+
+    const { songId } = React.useContext(AppStatus);
+    const navigation = useNavigation();
+  
+    React.useEffect(() =>   {
+      const fetchSong = async () => {
+              const data  =  Recommend.filter((Recommendsong) => {
+                return Recommendsong.id === songId
+              })
+              setSong(data[0]);
+          
+          }
+
+      fetchSong();
+      }, [songId])
 
 
-      const onPlaybackStatusUpdate = async (status) =>  {
-        setIsPlaying(status.isPlaying);
-        setDuration(status.durationMillis);
-        setPosition(status.positionMillis);
-        //console.log(status)
-      }
+    const onPlaybackStatusUpdate = async (status) =>  {
+      setIsPlaying(status.isPlaying);
+      setDuration(status.durationMillis);
+      setPosition(status.positionMillis);
+     
+    }
       
-
     // phat nhac
     async function playCurrentSong() {
-            if (sound) {
-            await sound.unloadAsync();
-            }
-
-           // console.log('Loading Sound');
-           const { sound } =  await  Audio.Sound.createAsync(
-                song.musicUrl ,
-                { shouldPlay: isPlaying },
-                onPlaybackStatusUpdate
-           
-            );
-           
-            setSound(sound);
-           // console.log(newsound);
+     
+        if (sound) {
+          console.log('Unloading Sound');
+        await sound.unloadAsync();
+        }
+         
+        const  { sound: newSound  } =   await  Audio.Sound.createAsync(
+          song.musicUrl ,
+          { shouldPlay: isPlaying },
+          onPlaybackStatusUpdate
+      
+         );
+       
+        setSound(newSound );
         
     }
     ////////////////////////////////////////
-        React.useEffect(() => {
-            if (song) {
-                playCurrentSong();
-              
-            }
-        }, [song]);
+    React.useEffect(() => {
+      if (song) {
+          playCurrentSong();
+        
+      }
+    }, [song]);
        
      
        // play pause music
-        const handlePlayPauseButton = async () => {
-              //console.log(isPlaying)
-             
-            if (!sound) {
-                    return;
-                }
-           
-            if (isPlaying) {
-             // setIsPlaying(!isPlaying)
-              await sound.pauseAsync();
-                 
+    const handlePlayPauseButton = async () => {
+         
+        if (!sound) {
+                return;
             }
-            else {
-             // setIsPlaying(!isPlaying)
-                await sound.playAsync();
-            }
-        }
-
-
-        function handleLikebtn() {
-            setIsLike( (isLiked === 'heart-outline' ? 'cards-heart': 'heart-outline'))
         
+        if (isPlaying) {
+         
+          await sound.pauseAsync();
+              
         }
-        const getProgress = () => {
-            if(sound === null || duration === null || position === null)
-            {return 0;}
-            return (position / duration) * 100;
+        else {
+         
+            await sound.playAsync();
         }
+    }
+
+    /// functions of component in the playwidget bar
+    
+    function handleLikebtn() {
+        setIsLike( !isLiked )
+    
+    }
+    
+    ////
+    const getProgress = () => {
+        if(sound === null || duration === null || position === null)
+        {return 0;}
+        return (position / duration) * 100;
+    }
    
-        // if (!song) {
-        // return null;
-        // }
-
-
-
+    if (!song) {
+    return null;
+    }
 
     return (
         <View style={styles.container}>
                 <View style={[styles.progressBar ,{width: `${getProgress()}%`}]} />
-                    <TouchableOpacity>
-                        <Image source={song_.imageUrl} style={styles.imgSong}></Image>
+                    <TouchableOpacity onPress={() => navigation.navigate('Music')}>
+                        <Image source={song.imageUrl} style={styles.imgSong}></Image>
                     </TouchableOpacity>
                     <View style={styles.rightContainer}>
-                        <Text style={styles.titleSong}>{song_.title}</Text>
-                        <Text style={styles.authorSong}>{song_.author}</Text>
+                        <Text style={styles.titleSong}>{song.title}</Text>
+                        <Text style={styles.authorSong}>{song.author}</Text>
                     </View>
                 <View style={styles.leftContainer}>
 
                     {/* nut like */}
                     <TouchableOpacity style={styles.likeBtn}
                     onPress={handleLikebtn}>
-                        <MaterialCommunityIcons name={isLiked} color="#000" size={33} />   
+                        <MaterialCommunityIcons name={isLiked ? 'cards-heart' :  'heart-outline'} color="#000" size={33} />   
                     </TouchableOpacity>
 
                     {/* nut play  */}
@@ -128,46 +153,29 @@ const PlayComponent = () => {
     );
 };
 export default class PlayWidget extends React.Component {
-   
-    // constructor (props) {
-    //     super(props)
-    //     this.state = {
-    //         isplay: 'play',
-    //         isLiked: 'heart-outline',
-    //     }
-    //  }
-    
-    // handleLikebtn = () => {
-    //     this.setState({ isLiked: (this.state.isLiked === 'heart-outline' ? 'cards-heart': 'heart-outline'),})
-    //     //console.log(this.state)
-    //   }
-      render (){
+  // handleTouch = () => {
+        
+  //   const navigation = useNavigation();
+
+  //     return (
+  //       <Button
+  //         title="Back"
+  //         onPress={() => {
+  //           navigation.goBack();
+  //         }}
+  //       />
+  //     );
+  //   }   
+  render (){
+       
+        
         return (
-            // <View style={styles.container}>
-            //     <View style={[styles.progressBar ,{width: `${PlayButton.getProgress()}%`}]} />
-            //     <TouchableOpacity>
-            //         <Image source={song.imageUrl} style={styles.imgSong}></Image>
-            //     </TouchableOpacity>
-            //     <View style={styles.rightContainer}>
-            //         <Text style={styles.titleSong}>{song.title}</Text>
-            //         <Text style={styles.authorSong}>{song.author}</Text>
-            //     </View>
-            //     <View style={styles.leftContainer}>
-
-            //         {/* nut like */}
-            //         <TouchableOpacity style={styles.likeBtn}
-            //         onPress={this.handleLikebtn}>
-            //               <MaterialCommunityIcons name={this.state.isLiked} color="#000" size={33} />   
-            //         </TouchableOpacity>
-
-            //          {/* nut play  */}
-            //         <PlayComponent/>
-            //     </View>
+           
+            <SafeAreaView>
+               
                 
-            // </View>
-            <View>
-                <PlayComponent/>
-            </View>
+                <PlayComponent />
+            </SafeAreaView>
           );
       }
 };
@@ -229,4 +237,11 @@ export const styles = StyleSheet.create({
    // backgroundColor: "#464564",
     marginRight: 5,
   },
+  touch:{
+    position: 'absolute',
+    height: 50,
+    width: 50,
+    backgroundColor: "#464564",
+    bottom: 50,
+  }
 });

@@ -50,26 +50,28 @@ export const Meditate = () => {
                 {meditateTypes.map((item, index) => {
                    
                     return(
-                        <View style={styles.meditateItemWrapper}>
-                        <TouchableOpacity key={index}
-                          
-                            style={[
-                                styles.meditateItem,
-                                {
-                                backgroundColor: item.isActive
-                                    ? colors.primary
-                                    : colors.gray,
-                                },
-                            ]}>
-                             <Image source={item.imageUrl} />
+                        <View style={styles.meditateItemWrapper} key={index}>
+                            <TouchableOpacity 
+                            
+                                style={[
+                                    styles.meditateItem,
+                                    {
+                                    backgroundColor: item.isActive
+                                        ? colors.primary
+                                        : colors.gray,
+                                    },
+                                ]}>
+                                <Image source={item.imageUrl} />
                             </TouchableOpacity>
+
                             <Text
-                            style={[
-                                styles.itemTitle,
-                                {color: item.isActive ? colors.heading : colors.gray},
-                            ]}>
-                            {item.title}
+                                style={[
+                                    styles.itemTitle,
+                                    {color: item.isActive ? colors.heading : colors.gray},
+                                ]}>
+                                {item.title}
                             </Text>
+
                         </View>
                     );
                 })
