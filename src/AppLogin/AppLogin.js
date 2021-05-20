@@ -9,7 +9,9 @@ import  GettingStarted  from '../screens/GettingStarted/GettingStarted';
 
 
 export  function AppLogin() {
-  
+  if(localStorage.getItem('access_token')){
+    return <GettingStarted/>
+  }
   return (
     <LoginNavigator/>
 

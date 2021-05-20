@@ -11,7 +11,7 @@ import { validateEmail, URL } from '../../utils';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [
@@ -58,6 +58,7 @@ export default function Login() {
         Toast.show({
           text1: 'Sign up success'
         });
+        props.navigation.navigate('GettingStarted')
       })
       .catch(error => {
         alert(error)

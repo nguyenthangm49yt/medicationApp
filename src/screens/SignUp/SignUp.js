@@ -10,7 +10,7 @@ import Toast from 'react-native-toast-message';
 import {validateEmail, URL} from '../../utils';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
-export default function SignUp() {
+export default function SignUp(props) {
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -62,9 +62,11 @@ export default function SignUp() {
       username, email, password, password_confirmation: passwordConfirmation
     })
         .then(response => {
+          
           Toast.show({
             text1: 'Sign up success'
           });
+          this.props.navigation.navigate('GettingStarted')
         })
         .catch(error => {
           alert(error)
