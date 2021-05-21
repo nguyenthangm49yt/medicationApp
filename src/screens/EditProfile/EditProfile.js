@@ -31,8 +31,8 @@ const InfoBox = ({ title, placeHolder, value }) => {
     )
 }
 
-export default function EditProfile () {
-    const[
+export default function EditProfile() {
+    const [
         { data: putData, loading: putLoading, error: putError },
         executePost
     ] = useAxios(
@@ -74,50 +74,48 @@ export default function EditProfile () {
         );
     }
 
-    render() {
-        return (
-            <SafeAreaView style={styles.container}>
-                {/* Headers */}
-                <View style={styles.header}>
-                    <TouchableOpacity style={styles.headerRightBtnsWrapper}
-                        onPress={this.handleBack}>
+    return (
+        <SafeAreaView style={styles.container}>
+            {/* Headers */}
+            <View style={styles.header}>
+                <TouchableOpacity style={styles.headerRightBtnsWrapper}
+                    onPress={this.handleBack}>
 
-                        <MaterialCommunityIcons name="arrow-left-circle-outline" color="#36454f" size={35} />
-                    </TouchableOpacity>
-                    <Text style={styles.headerTitle}>Edit your Profile</Text>
-                    <TouchableOpacity
-                        style={styles.headerRightBtnsWrapper}
-                        onPress={this.handleSave}>
+                    <MaterialCommunityIcons name="arrow-left-circle-outline" color="#36454f" size={35} />
+                </TouchableOpacity>
+                <Text style={styles.headerTitle}>Edit your Profile</Text>
+                <TouchableOpacity
+                    style={styles.headerRightBtnsWrapper}
+                    onPress={this.handleSave}>
 
-                        <MaterialCommunityIcons name="content-save-edit-outline" color="#36454f" size={30} />
-                    </TouchableOpacity>
-                </View>
+                    <MaterialCommunityIcons name="content-save-edit-outline" color="#36454f" size={30} />
+                </TouchableOpacity>
+            </View>
 
-                {/* content */}
-                <ScrollView showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ paddingBottom: 30 }}>
-                    {/* user name and email */}
-                    <View style={styles.userWrapper}>
+            {/* content */}
+            <ScrollView showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: 30 }}>
+                {/* user name and email */}
+                <View style={styles.userWrapper}>
 
-                        <Image style={styles.image} source={require('../../../assets/images/user.png')} />
+                    <Image style={styles.image} source={require('../../../assets/images/user.png')} />
 
-                        <View style={styles.profileInfos}>
-                            <View style={styles.nameSection}>
-                                <Text style={styles.nameSectionAcc}>Name</Text>
-                                <Text style={{ color: colors.white }}>name@gmail.com</Text>
-                            </View>
+                    <View style={styles.profileInfos}>
+                        <View style={styles.nameSection}>
+                            <Text style={styles.nameSectionAcc}>Name</Text>
+                            <Text style={{ color: colors.white }}>name@gmail.com</Text>
                         </View>
                     </View>
+                </View>
 
-                    {/* info list of user */}
-                    <InfoBox title={'Name'} placeHolder={'name'} value={'username'} />
-                    <InfoBox title={'Phone'} placeHolder={'Phone'} value={'0123456789'} />
+                {/* info list of user */}
+                <InfoBox title={'Name'} placeHolder={'name'} value={'username'} />
+                <InfoBox title={'Phone'} placeHolder={'Phone'} value={'0123456789'} />
 
 
 
 
-                </ScrollView>
-            </SafeAreaView>
-        );
-    }
+            </ScrollView>
+        </SafeAreaView>
+    );
 };
