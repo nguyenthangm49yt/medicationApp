@@ -7,6 +7,7 @@ import { FindForm } from '../../components/forms/FindForm/FindForm';
 import { validateEmail, URL } from '../../utils';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
+import {Action} from './../Playlists/Playlists'
 import Toast from 'react-native-toast-message';
 export const FindScreen = () => {
     const [keyword, setKeyword] = useState('');
@@ -19,29 +20,17 @@ export const FindScreen = () => {
     )
     if (data) {
         if(data.songs.length==0) {
-            <Text style={styles.contentTitle}>
-                Not Found
-            </Text>
+           list= 'Not found'
+        }
+        else if(data.songs[`\u0000*\u0000items`].length == 0) {
+            list= 'Not found'
         }
         else {
             let songs = data.songs[`\u0000*\u0000items`]
-            console.log(songs)
             list = songs.map((item, index) =>{
                 return (
-                    <TouchableOpacity style={styles.recommendItem} 
-                    // onPress={onPlay} 
-                    >
-                        <View >
-                            <Image source={item.path_img} style={styles.imageMusic}/>
-                        </View>           
-                        <Text
-                            style={styles.title}>
-                            {item.songTitle}
-                        </Text>
-                        <Text
-                            style={styles.author}>
-                            {item.artists[0] ? item.artists[0].artistName :''}
-                        </Text>
+                    <TouchableOpacity style={styles.actions}>
+                        <Action name={item.songTitle} author= {item.artists[0] ? item.artists[0].artistName :''} iconame={'heart-multiple-outline'} color={'#fe4a49'}/>
                     </TouchableOpacity>
                 )
             })

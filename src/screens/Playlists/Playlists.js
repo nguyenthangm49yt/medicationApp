@@ -4,7 +4,7 @@ import {colors} from '../../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {styles} from './styles'
 
-const Action = ({name, author, iconame, color}) => {
+export const Action = ({name, author, iconame, color}) => {
     color = colors.facebookBg; 
     return(
         <View style={styles.actions}>
