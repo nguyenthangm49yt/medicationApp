@@ -5,11 +5,17 @@ import {fonts} from '../../config/fonts';
 import {PrimaryButton} from '../../components/buttons/PrimaryButton/PrimaryButton';
 
 export default class GettingStarted extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   handleBtn = () => {
     // TODO: ..
     this.props.navigation.navigate('index')
   }
   render() {
+    if(localStorage.getItem('access_token')) {
+      this.props.navigation.navigate('index')
+    }
     return (
         <View style={styles.container}>
             <View style={styles.logoWrapper}>

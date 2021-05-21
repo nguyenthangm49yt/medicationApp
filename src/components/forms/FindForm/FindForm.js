@@ -5,10 +5,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { onChange } from 'react-native-reanimated';
 
 export const FindForm = (props) => {
-    const {placeHolder, value} = props;
-    const [text, setText] = React.useState(value);
-    const onChange = (text) =>{
-
+    const [text, setText] = React.useState('');
+    const onChange = (text) => {
+      setText(text);
+      props.onSearch(text)
     }
     return (
         <View style={styles.container}>
@@ -18,12 +18,8 @@ export const FindForm = (props) => {
             <TextInput value={text}
                 onChangeText={text => onChange(text)}
                 style={styles.input}
-                placeHolder={placeHolder}
+                placeHolder="search..."
             />
-              <TouchableOpacity style={styles.clearBtn}
-                  onPress={ (text) => onPress(text)} >
-                <MaterialCommunityIcons name="close" color="#cccccc" size={20} />
-              </TouchableOpacity> 
         </View>
     );
 };

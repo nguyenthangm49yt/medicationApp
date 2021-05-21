@@ -12,6 +12,9 @@ import useAxios from 'axios-hooks'
 import axios from 'axios'
 
 export default function Login(props) {
+  if(localStorage.getItem('access_token')) {
+    props.navigation.navigate('index')
+  }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [
