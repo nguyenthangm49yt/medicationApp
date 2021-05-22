@@ -10,8 +10,25 @@ import Toast from 'react-native-toast-message';
 import {validateEmail, URL} from '../../utils';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
+import { AsyncStorage } from 'react-native';
+
 export default function SignUp(props) {
-  if(localStorage.getItem('access_token')) {
+  const [isLogin, setIsLogin] = useState(null)
+  const _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('access_token');
+      setIsLogin(value);
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  _retrieveData()
+  if(isLogin != null) {
+    console.log(isLogin)
     props.navigation.navigate('index')
   }
   const [username, setUsername] = useState('');
@@ -68,7 +85,7 @@ export default function SignUp(props) {
           Toast.show({
             text1: 'Sign up success'
           });
-          this.props.navigation.navigate('GettingStarted')
+          props.navigation.navigate('GettingStarted')
         })
         .catch(error => {
           alert(error)

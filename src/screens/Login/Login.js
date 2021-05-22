@@ -10,9 +10,24 @@ import Toast from 'react-native-toast-message';
 import { validateEmail, URL } from '../../utils';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
+import { AsyncStorage } from 'react-native';
 
 export default function Login(props) {
-  if(localStorage.getItem('access_token')) {
+  const [isLogin, setIsLogin] = useState(null);
+  const _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('access_token');
+      setIsLogin(value);
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  _retrieveData();
+  if(isLogin) {
     props.navigation.navigate('index')
   }
   const [email, setEmail] = useState('');
@@ -57,7 +72,16 @@ export default function Login(props) {
       email, password
     })
       .then(response => {
-        localStorage.setItem('access_token', response.data.access_token)
+        _storeData = async () => {
+          try {
+            await AsyncStorage.setItem(
+              'access_token',
+              response.data.access_token
+            );
+          } catch (error) {
+            // Error saving data
+          }
+        };
         Toast.show({
           text1: 'Sign up success'
         });

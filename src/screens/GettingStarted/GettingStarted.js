@@ -1,20 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity} from 'react-native';
 import {colors} from '../../config/colors';
 import {fonts} from '../../config/fonts';
 import {PrimaryButton} from '../../components/buttons/PrimaryButton/PrimaryButton';
-
-export default class GettingStarted extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  handleBtn = () => {
+import { AsyncStorage } from 'react-native';
+export default function GettingStarted (props) {
+  const [isLogin, setIsLogin] = useState(null);
+  const _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('access_token');
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  const handleBtn = () => {
     // TODO: ..
-    this.props.navigation.navigate('index')
+    props.navigation.navigate('index')
   }
-  render() {
-    if(localStorage.getItem('access_token')) {
-      this.props.navigation.navigate('index')
+  _retrieveData();
+    if(isLogin == null) {
+      props.navigation.navigate('index')
     }
     return (
         <View style={styles.container}>
@@ -72,7 +81,7 @@ export default class GettingStarted extends React.Component {
 
                 <View style={styles.bgBtn}></View>
                 <View style={styles.bgWrapper}>
-                    <TouchableOpacity onPress={this.handleBtn}>
+                    <TouchableOpacity onPress={handleBtn}>
                       <PrimaryButton
                       background={colors.whiteShadeBg}
                       color={colors.heading}
@@ -83,7 +92,6 @@ export default class GettingStarted extends React.Component {
             </View>
         </View>
     );
-  };
 };
 
 export const styles =  StyleSheet.create({

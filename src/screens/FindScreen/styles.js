@@ -29,13 +29,13 @@ export const styles = StyleSheet.create({
   },
   content: {
     marginTop: 30,
-    backgroundColor: "#dcdcdc",
+    // backgroundColor: "#dcdcdc",
   },
   contentTitle: {
     fontSize: 25,
   },
   contentResult: {
-    backgroundColor: "#ccc",
+    // backgroundColor: "#ccc",
     padding: 10,
     height: '88%',
   },

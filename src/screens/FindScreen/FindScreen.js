@@ -11,7 +11,10 @@ import {Action} from './../Playlists/Playlists'
 import Toast from 'react-native-toast-message';
 export const FindScreen = () => {
     const [keyword, setKeyword] = useState('');
-    let list = ``;
+    let list =  
+        <Text>
+            Not found
+        </Text>;
     const onSearch = (text) => {
         setKeyword(text)
     }
@@ -20,16 +23,22 @@ export const FindScreen = () => {
     )
     if (data) {
         if(data.songs.length==0) {
-           list= 'Not found'
+           list= 
+           <Text>
+               Not found
+            </Text>
         }
         else if(data.songs[`\u0000*\u0000items`].length == 0) {
-            list= 'Not found'
+            list= 
+            <Text>
+                Not found
+            </Text>
         }
         else {
             let songs = data.songs[`\u0000*\u0000items`]
             list = songs.map((item, index) =>{
                 return (
-                    <TouchableOpacity style={styles.actions}>
+                    <TouchableOpacity style={styles.actions} key={index}>
                         <Action name={item.songTitle} author= {item.artists[0] ? item.artists[0].artistName :''} iconame={'heart-multiple-outline'} color={'#fe4a49'}/>
                     </TouchableOpacity>
                 )
@@ -58,9 +67,8 @@ export const FindScreen = () => {
             </View>
             
             <View style={styles.content}>
-            {list}
                 <ScrollView style={styles.contentResult}>
-
+                    {list}
                 </ScrollView>
             </View>
         </View>
