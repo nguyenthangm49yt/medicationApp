@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { PrimaryButton } from '../../components/buttons/PrimaryButton/PrimaryButton';
 import { SecondaryButton } from '../../components/buttons/SecondaryButton/SecondaryButton';
@@ -6,51 +6,47 @@ import { colors } from '../../config/colors';
 import { fonts } from '../../config/fonts';
 import { PrimaryInput } from '../../components/forms/PrimaryInput/PrimaryInput';
 
-import Toast from 'react-native-toast-message';
 import { validateEmail, URL } from '../../utils';
+import Toast from 'react-native-toast-message';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { requestPermissionsAsync } from 'expo-av/build/Audio';
 
 export default function Login(props) {
   const [isLogin, setIsLogin] = useState(null);
+  useEffect(() =>{
+    _retrieveData();
+  },[])
   const _retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('access_token');
       setIsLogin(value);
       if (value !== null) {
         // We have data!!
-        console.log(value);
       }
     } catch (error) {
       // Error retrieving data
     }
   };
-  _retrieveData();
   if(isLogin) {
     props.navigation.navigate('index')
   }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [
-    { data: putData, loading: putLoading, error: putError },
-    executePost
-  ] = useAxios(
-    {
-      url: `${URL}/api/auth/login`,
-      method: 'POST',
-      headers: {
-        'Access-Control-Allow-Origin': '*'
-      }
-    },
-    { manual: true }
-  )
-  if (putData) {
-    Toast.show({
-      text1: 'Sign up success'
-    });
-  }
-  const onSubmit = () => {
+  const _storeData = async (response) => {
+    console.log(response.data)
+    let jsonValue = JSON.stringify(response.data);
+    try {
+      await AsyncStorage.setItem(
+        'access_token',
+        jsonValue
+      );
+    } catch (error) {
+      // Error saving data
+    }
+  };
+  const onSubmit = async () => {
     if (validateEmail(email) == false) {
       Toast.show({
         text1: 'Invalid email'
@@ -63,25 +59,16 @@ export default function Login(props) {
       });
       return;
     }
-    // executePost({
-    //   data: {
-    //     username, email, password, password_confirmation: passwordConfirmation
-    //   }
-    // })
-    axios.post(`${URL}/api/auth/login`, {
+    axios.post(`${URL}/api/login`, {
       email, password
     })
       .then(response => {
-        _storeData = async () => {
-          try {
-            await AsyncStorage.setItem(
-              'access_token',
-              response.data.access_token
-            );
-          } catch (error) {
-            // Error saving data
-          }
-        };
+        Toast.show({
+          text1: 'Sign in success'
+        });
+       
+        _storeData(response);
+        console.log('store')
         Toast.show({
           text1: 'Sign up success'
         });

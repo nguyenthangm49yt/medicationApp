@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image, ImageBackground, TouchableOpacity} from '
 import {colors} from '../../config/colors';
 import {fonts} from '../../config/fonts';
 import {PrimaryButton} from '../../components/buttons/PrimaryButton/PrimaryButton';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function GettingStarted (props) {
   const [isLogin, setIsLogin] = useState(null);
   const _retrieveData = async () => {
@@ -11,7 +11,6 @@ export default function GettingStarted (props) {
       const value = await AsyncStorage.getItem('access_token');
       if (value !== null) {
         // We have data!!
-        console.log(value);
       }
     } catch (error) {
       // Error retrieving data

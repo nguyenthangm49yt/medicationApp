@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { colors } from '../../config/colors';
 import { SecondaryButton } from '../../components/buttons/SecondaryButton/SecondaryButton';
@@ -10,25 +10,24 @@ import Toast from 'react-native-toast-message';
 import {validateEmail, URL} from '../../utils';
 import useAxios from 'axios-hooks'
 import axios from 'axios'
-import { AsyncStorage } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function SignUp(props) {
-  const [isLogin, setIsLogin] = useState(null)
+  const [isLogin, setIsLogin] = useState(null);
+  useEffect(() => {
+    _retrieveData();
+  })
   const _retrieveData = async () => {
     try {
       const value = await AsyncStorage.getItem('access_token');
-      setIsLogin(value);
       if (value !== null) {
+        setIsLogin(value);
         // We have data!!
-        console.log(value);
       }
     } catch (error) {
       // Error retrieving data
     }
   };
-  _retrieveData()
   if(isLogin != null) {
-    console.log(isLogin)
     props.navigation.navigate('index')
   }
   const [username, setUsername] = useState('');
@@ -72,11 +71,18 @@ export default function SignUp(props) {
       });
       return;
     }
-    // executePost({
-    //   data: {
-    //     username, email, password, password_confirmation: passwordConfirmation
-    //   }
-    // })
+    const _storeData = async (response) => {
+      console.log(response.data)
+      let jsonValue = JSON.stringify(response.data);
+      try {
+        await AsyncStorage.setItem(
+          'access_token',
+          jsonValue
+        );
+      } catch (error) {
+        // Error saving data
+      }
+    };
     axios.post(`${URL}/api/auth/register`, {
       username, email, password, password_confirmation: passwordConfirmation
     })
@@ -85,6 +91,7 @@ export default function SignUp(props) {
           Toast.show({
             text1: 'Sign up success'
           });
+          _storeData(response)
           props.navigation.navigate('GettingStarted')
         })
         .catch(error => {
